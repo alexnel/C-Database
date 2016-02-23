@@ -7,6 +7,11 @@
 #include <iostream>
 #include <cstdlib>
 namespace NLXALE001 {
+	void add_student(void);
+	void read_data(void);
+	void save_data(void);
+	void disp_student(void);
+	void grade_student(void);
 }
 #endif
 
