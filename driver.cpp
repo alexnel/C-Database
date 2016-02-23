@@ -1,18 +1,20 @@
-#include <iostream>
 #include "database.h"
-using namespace std;
 
-NLXALE001::add_student(std::string name ...){
-
-	int main() {
-		cout << "0:  Add student" << endl;
-		cout << "1:  Read database" << endl;
-		cout << "2:  Save database" << endl;
-		cout << "3:  Display given student number" << endl;
-		cout << "4:  Grade student" << endl;
-		cout << "q:  Quit" << endl;
-		cout << "Enter a number (or q to quit) and press return" << endl;
-		return 0;
-	}
-
+int main(void) {
+	std::cout << "0:  Add student" << std::endl;
+	std::cout << "1:  Read database" << std::endl;
+	std::cout << "2:  Save database" << std::endl;
+	std::cout << "3:  Display given student number" << std::endl;
+	std::cout << "4:  Grade student" << std::endl;
+	std::cout << "q:  Quit" << std::endl;
+	std::cout << "Enter a number (or q to quit) and press return" << std::endl;
+	
+	char choice;
+	std::cin >> choice;
+	
+	
 }
+	
+	return 0;
+}
+
