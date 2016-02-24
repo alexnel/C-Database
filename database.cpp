@@ -3,24 +3,25 @@
 namespace NLXALE001 {
 
 
-//Name (String), Surname (String), StudentNumber (String), ClassRecord (String)
+	std::vector<StudentRecord> s;
 
 
 void add_student(void){
-//give more information
+//give more information	
+
+	int i = s.size();
+	
+	s.push_back(StudentRecord());
+	
 	std::cout << "Enter a student name:" << std::endl;
-	std::string name;
-	std::cin >> name;
+	std::cin >> s[i].name;
 	std::cout << "Enter a student surname:" << std::endl;
-	std::string surname;
-	std::cin >> surname;
+	std::cin >> s[i].surname;
 	std::cout << "Enter a student number:" << std::endl;
-	std::string stuno;
-	std::cin >> stuno;
+	std::cin >> s[i].stuno;
 	std::cout << "Enter the class record:" << std::endl;
-	std::string record;
-	std::cin.ignore();
-	getline(std::cin, record);
+	std::cin.ignore();	//handle spaces
+	getline(std::cin, s[i].record);
 
 //once done
 	system("clear");
@@ -43,7 +44,9 @@ void save_data(void){
 
 void disp_student(void){
 //give more information
-	std::cout << "Got here." << std::endl;
+	std::cout << "Enter a student number:" << std::endl;
+	std::string stuno;
+	std::cin >> stuno;
 
 }
 

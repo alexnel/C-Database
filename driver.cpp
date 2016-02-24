@@ -1,9 +1,12 @@
 #include "database.h"
 
+
 int main(void) {
 
 for (;;)
 {
+
+	
 	std::cout << "0:  Add student" << std::endl;
 	std::cout << "1:  Read database" << std::endl;
 	std::cout << "2:  Save database" << std::endl;
