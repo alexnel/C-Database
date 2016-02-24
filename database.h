@@ -6,6 +6,8 @@
 //any includes here 
 #include <iostream>
 #include <cstdlib>
+#include <string>
+#include <sstream>
 namespace NLXALE001 {
 	void add_student(void);
 	void read_data(void);

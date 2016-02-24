@@ -1,6 +1,9 @@
 #include "database.h"
 
 int main(void) {
+
+for (;;)
+{
 	std::cout << "0:  Add student" << std::endl;
 	std::cout << "1:  Read database" << std::endl;
 	std::cout << "2:  Save database" << std::endl;
@@ -35,8 +38,8 @@ int main(void) {
 	    default:
 	       std::cout << "Invalid input." << std::endl;
 	}
-	
-	
-	return 0;
+
+}//end for
+return 0;
 }
 
