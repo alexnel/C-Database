@@ -23,6 +23,9 @@ namespace NLXALE001 {
 	void read_data(void);
 	void save_data(void);
 	void disp_student(void);
+	int findstudent(std::string);
+	void saverec(std::string, std::string, std::string, std::string);
+	void printrec(int);
 	void grade_student(void);
 }
 #endif
