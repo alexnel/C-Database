@@ -38,14 +38,45 @@ void add_student(void){
 }
 
 void read_data(void){
-//give more information
-	std::cout << "Got here." << std::endl;
+	
+	//create file here
+	std::ofstream out;
+	out.open("data.txt");
+	
+	for (int i = 0; i < s.size(); i = i + 1)
+	{
+		std::string line = s[i].name + " " + s[i].surname + " " + s[i].stuno + " " + s[i].record;
+		out << line << endl;
+	}
 
 }
 
+
 void save_data(void){
 //give more information
-	std::cout << "Got here." << std::endl;
+	
+	std::string nname;
+	std::string nsurname;
+	std::string nstuno;
+	std::string nrecord;
+	
+	//read file
+	std::ifstream infile("thefile.txt");						//change to filename they input
+	//while(hasnext)
+	std::string line;
+	while (std::getline(infile, line))
+	{
+		std::istringstream iss(line);
+		
+		iss >> nname >> nsurname >> nstuno;
+		std::string mark;
+		std::string marks = "";
+		while (!iss.eof()){
+			iss >> mark;
+			marks += mark + " ";	}
+		saverec(nname, nsurname, nstuno, marks);
+	}
+	
 //once done
 	system("clear");
 	std::cout << "Data capture complete." << std::endl;
