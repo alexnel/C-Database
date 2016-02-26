@@ -8,8 +8,8 @@ for (;;)
 
 	
 	std::cout << "0:  Add student" << std::endl;
-	std::cout << "1:  Read database to file called 'data.txt'" << std::endl;
-	std::cout << "2:  Save file to database" << std::endl;
+	std::cout << "1:  Read file to databse" << std::endl;
+	std::cout << "2:  Save database to file" << std::endl;
 	std::cout << "3:  Display given student number" << std::endl;
 	std::cout << "4:  Grade student" << std::endl;
 	std::cout << "q:  Quit" << std::endl;

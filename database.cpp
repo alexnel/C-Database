@@ -2,10 +2,10 @@
 
 namespace NLXALE001 {
 
-
+	//initialise vector
 	std::vector<StudentRecord> s;
 
-
+//add student record to database
 void add_student(void){
 //give more information	
 	
@@ -16,6 +16,7 @@ void add_student(void){
 
 	int i = s.size();
 	
+	//get data from user
 	std::cout << "Enter a student name: " << std::endl;
 	std::cin >> nname;
 	std::cout << "Enter a student surname: " << std::endl;
@@ -28,41 +29,51 @@ void add_student(void){
 	
 	int recnum = findstudent(nstuno);
 
-	if (recnum == (-1))
+	if (recnum == (-1))	//record not yet recorded
 	{	saverec(nname, nsurname, nstuno, nrecord);	}
 	else
 	{	system("clear");
-		std::cout << "Student '" << nstuno << "' already in record. Student not added." << std::endl;	}
+		std::cout << "Student '" << nstuno << "' already in record. Student not added." << std::endl << std::endl;	}
 
 
 }
-
-void read_data(void){
+//add students from database to file
+void save_data(void){
 	
 	//create file here
 	std::ofstream out;
-	out.open("data.txt");
+	std::string file;
 	
+	std::cout << "Enter a file name: " << std::endl;
+	std::cin >> file;
+
+	out.open(file.c_str());
+	
+	//add to file
 	for (int i = 0; i < s.size(); i = i + 1)
 	{
 		std::string line = s[i].name + " " + s[i].surname + " " + s[i].stuno + " " + s[i].record;
-		out << line << endl;
+		out << line << std::endl;
 	}
 
 }
 
-
-void save_data(void){
+//add students from file to database
+void read_data(void){
 //give more information
 	
 	std::string nname;
 	std::string nsurname;
 	std::string nstuno;
 	std::string nrecord;
+	std::string file;
+	
+	std::cout << "Enter a file name: " << std::endl;
+	std::cin >> file;
 	
 	//read file
-	std::ifstream infile("thefile.txt");						//change to filename they input
-	//while(hasnext)
+	std::ifstream infile(file.c_str());
+	//while(hasnext) add to database
 	std::string line;
 	while (std::getline(infile, line))
 	{
@@ -73,41 +84,52 @@ void save_data(void){
 		std::string marks = "";
 		while (!iss.eof()){
 			iss >> mark;
-			marks += mark + " ";	}
-		saverec(nname, nsurname, nstuno, marks);
+			marks += mark;
+			if (!iss.eof())
+			{	marks += " ";	}	}
+		
+		int recnum = findstudent(nstuno);
+
+		if (recnum == (-1))	//record not yet recorded
+		{	saverec(nname, nsurname, nstuno, marks);	}
+		else
+		{	system("clear");
+			std::cout << "Student '" << nstuno << "' already in record. Student not added." << std::endl << std::endl;	}
 	}
 	
 //once done
 	system("clear");
-	std::cout << "Data capture complete." << std::endl;
+	std::cout << "Data capture complete." << std::endl << std::endl;
 }
 
+//find student and print out
 void disp_student(void){
-//give more information
 	std::cout << "Enter a student number:" << std::endl;
 	std::string num;
 	std::cin >> num;
 	
 	int recnum = findstudent(num);
 	
-	if (recnum != -1)
+	if (recnum != -1)	//student found
 	{	system("clear");
 		printrec(recnum);		}
-	else
+	else			//student not found
 	{	system("clear");
-		std::cout << "Student " << recnum << " not found." << std::endl;	}
+		std::cout << "Student " << recnum << " not found." << std::endl << std::endl;	}
 
 }
 
+//find student in records and return vecor index
 int findstudent(std::string num){
 	for (int i = 0; i < s.size(); i = i + 1)
 	{
 		if (s[i].stuno == num)
 		{	return i;		}
 	}
-	return (-1);
+	return (-1);	//student not found
 }
 
+//save record in new vector instance
 void saverec(std::string nname, std::string nsurname, std::string nstuno, std::string nrecord){
 	int i = s.size();
 	s.push_back(StudentRecord());
@@ -117,9 +139,10 @@ void saverec(std::string nname, std::string nsurname, std::string nstuno, std::s
 	s[i].record = nrecord;
 	
 	system("clear");
-	std::cout << "Student '" << s[i].stuno << "' added. Number of records: " << s.size() << std::endl;
+	std::cout << "Student '" << s[i].stuno << "' added. Number of records: " << s.size() << std::endl << std::endl;
 }
 
+//print out student record in nice format
 void printrec(int i){
 	std::cout << "Student name: " << s[i].name << std::endl;
 	std::cout << "Student surname: " << s[i].surname << std::endl;
@@ -127,7 +150,7 @@ void printrec(int i){
 	std::cout << "Class record: " << s[i].record << std::endl;
 }
 
-
+//find average of a given students grade
 void grade_student(void){
 //give more information
 	std::cout << "Enter a student number:" << std::endl;
@@ -155,10 +178,10 @@ void grade_student(void){
 		av = total/c;
 		
 		system("clear");
-		std::cout << "Student '" << num << "' has a class record of " << av << std::endl;	}
+		std::cout << "Student '" << num << "' has a class record of " << av << std::endl << std::endl;	}
 	else
 	{	system("clear");
-		std::cout << "Student '" << num << "' not found." << std::endl;	}
+		std::cout << "Student '" << num << "' not found." << std::endl << std::endl;	}
 
 }
 
