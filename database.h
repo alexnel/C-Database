@@ -1,3 +1,6 @@
+//Author: NLXALE001
+//Project: C++ Assignment 1
+
 /**
 *.h file:
 */
