@@ -75,7 +75,13 @@ void read_data(void){
 	std::cin >> file;
 	
 	//read file
-	std::ifstream infile(file.c_str());
+	std::ifstream infile;
+	infile.open(file.c_str());
+	
+	if (infile.fail())
+	{	system("clear");	
+		std::cout << "File opening failed. Please ensure file exists and that permissions for the file are in order." << std::endl << std::endl;
+		return;	}
 	//while(hasnext) add to database
 	std::string line;
 	while (std::getline(infile, line))
